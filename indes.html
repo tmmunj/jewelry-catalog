@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ювелирка • Каталог</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="page">
+
+        <div class="header">
+            <div class="header-actions">
+                <a href="https://t.me/tmmunjewelry" target="_blank" class="order-btn">
+                    ЗАКАЗАТЬ
+                </a>
+                <button onclick="clearAllFilters()" class="clear-btn">
+                    ОЧИСТИТЬ ВСЕ
+                </button>
+            </div>
+
+            <div id="selected-tags" class="selected-tags"></div>
+            <div id="available-tags" class="available-tags"></div>
+        </div>
+
+        <div id="grid" class="grid"></div>
+    </div>
+
+    <div id="toast" class="toast">
+        <span id="toast-text"></span>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

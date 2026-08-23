@@ -48,7 +48,7 @@ let items = [...r, ...e, ...p, ...b, ...c].map(function (item, index) {
     return Object.assign({}, item, { id: index + 1 });
 });
 
-const allTags = ["gold", "silver", "bracelets", "earrings", "pendants", "chains", "ring", "sets", "random", "brand"];
+const allTags = ["bracelets", "earrings", "pendants", "chains", "ring", "sets", "random", "brand"];
 let activeFilters = new Set();
 
 const SOCIAL = {
@@ -59,7 +59,7 @@ const SOCIAL = {
 
 // Formspree: замените на свой ID с https://formspree.io
 // Пример: если endpoint https://formspree.io/f/xyzabcde → укажите "xyzabcde"
-const FORMSPREE_ID = "YOUR_FORMSPREE_ID";
+const FORMSPREE_ID = "xjybzwap";
 
 // текущий выбор в модалке
 let currentArticle = "";

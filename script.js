@@ -6,7 +6,7 @@
 // r — кольца (rings)
 let r = [
     { article: "r-001", tags: ["ring"], image: "img_kart/r/r-001.png" },
-    { article: "r-002", tags: ["ring"], image: "img_kart/r/R-002.png" },
+    { article: "r-002", tags: ["ring"], image: "img_kart/r/r-002.png" },
     { article: "r-003", tags: ["ring"], image: "img_kart/r/r-003.png" },
     { article: "r-004", tags: ["ring"], image: "img_kart/r/r-004.png" },
     { article: "r-005", tags: ["ring"], image: "img_kart/r/r-005.png" },

@@ -50,10 +50,13 @@ body {
     font-weight: 500;
     font-size: 1rem;
     letter-spacing: 0.05em;
-    padding: 0.55rem 2rem;
-    border-radius: 10px;
+    padding: 0.75rem 2rem;
+    border-radius: 9999px;
+    border: none;
+    cursor: pointer;
+    font-family: inherit;
     text-decoration: none;
-    transition: all 1.3s ease;
+    transition: all 0.3s ease;
     box-shadow: 0 4px 15px -3px rgb(235 118 4);
 }
 
@@ -71,7 +74,7 @@ body {
     font-size: 0.875rem;
     letter-spacing: 0.05em;
     padding: 0.75rem 1.5rem;
-    border-radius: 10px;
+    border-radius: 9999px;
     border: none;
     cursor: pointer;
     transition: all 0.2s ease;
@@ -288,4 +291,300 @@ body {
         opacity: 1;
         transform: translate(-50%, 0);
     }
+}
+
+/* ====================== МОДАЛКА ЗАКАЗА ====================== */
+.modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.7);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+    padding: 1rem;
+}
+
+.modal-overlay.open {
+    display: flex;
+}
+
+.modal-card {
+    position: relative;
+    width: 100%;
+    max-width: 360px;
+    background: #141416;
+    border-radius: 28px;
+    padding: 2rem 1.5rem 1.75rem;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.6);
+    max-height: 90vh;
+    overflow-y: auto;
+}
+
+.modal-close {
+    position: absolute;
+    top: 0.85rem;
+    right: 1rem;
+    background: none;
+    border: none;
+    color: #71717a;
+    font-size: 1.75rem;
+    line-height: 1;
+    cursor: pointer;
+    transition: color 0.2s ease;
+}
+
+.modal-close:hover {
+    color: #fff;
+}
+
+.modal-title {
+    text-align: center;
+    font-size: 1.35rem;
+    letter-spacing: 0.08em;
+    margin-bottom: 1.5rem;
+    color: #EB7604;
+}
+
+.modal-article-block {
+    text-align: center;
+    background: #1c1c1f;
+    border-radius: 16px;
+    padding: 1rem 1.25rem;
+    margin-bottom: 1.25rem;
+}
+
+.modal-label {
+    display: block;
+    font-size: 0.75rem;
+    color: #71717a;
+    letter-spacing: 0.06em;
+    margin-bottom: 0.35rem;
+}
+
+.modal-article {
+    font-size: 1.5rem;
+    letter-spacing: 0.06em;
+    color: #fff;
+    margin-bottom: 0.35rem;
+}
+
+.modal-hint {
+    display: block;
+    font-size: 0.75rem;
+    color: #52525b;
+}
+
+.modal-text {
+    text-align: center;
+    font-size: 0.9rem;
+    color: #a1a1aa;
+    line-height: 1.45;
+    margin-bottom: 1.5rem;
+}
+
+/* ====================== РАЗМЕР КОЛЬЦА ====================== */
+.ring-size-block {
+    margin-bottom: 1.25rem;
+    text-align: center;
+}
+
+.ring-size-label {
+    font-size: 0.9rem;
+    color: #a1a1aa;
+    margin-bottom: 0.75rem;
+    letter-spacing: 0.03em;
+}
+
+.ring-size-options {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.size-btn {
+    width: 44px;
+    height: 44px;
+    border: 1px solid #3f3f46;
+    border-radius: 12px;
+    background: #1c1c1f;
+    color: #e4e4e7;
+    font-family: inherit;
+    font-size: 0.95rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.size-btn:hover {
+    border-color: #EB7604;
+    color: #fff;
+}
+
+.size-btn.active {
+    background: #EB7604;
+    border-color: #EB7604;
+    color: #181818;
+}
+
+/* ====================== ФОРМА ЗАКАЗА ====================== */
+.order-form {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    margin-bottom: 1.25rem;
+}
+
+.form-field {
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+    text-align: left;
+}
+
+.form-field span {
+    font-size: 0.75rem;
+    color: #71717a;
+    letter-spacing: 0.04em;
+}
+
+.form-field input,
+.form-field textarea {
+    width: 100%;
+    background: #1c1c1f;
+    border: 1px solid #3f3f46;
+    border-radius: 12px;
+    padding: 0.7rem 0.9rem;
+    color: #fff;
+    font-family: inherit;
+    font-size: 0.9rem;
+    outline: none;
+    transition: border-color 0.2s ease;
+    resize: vertical;
+}
+
+.form-field input:focus,
+.form-field textarea:focus {
+    border-color: #EB7604;
+}
+
+.form-field input::placeholder,
+.form-field textarea::placeholder {
+    color: #52525b;
+}
+
+.form-submit {
+    margin-top: 0.25rem;
+    width: 100%;
+    background: #EB7604;
+    color: #181818;
+    border: none;
+    border-radius: 9999px;
+    padding: 0.85rem 1rem;
+    font-family: inherit;
+    font-size: 0.95rem;
+    letter-spacing: 0.05em;
+    cursor: pointer;
+    transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.form-submit:hover:not(:disabled) {
+    background: #ff8a1f;
+    transform: translateY(-1px);
+}
+
+.form-submit:disabled {
+    opacity: 0.7;
+    cursor: default;
+}
+
+.form-status {
+    text-align: center;
+    font-size: 0.85rem;
+    margin: 0;
+}
+
+.form-status.ok {
+    color: #4ade80;
+}
+
+.form-status.error {
+    color: #f87171;
+}
+
+.modal-divider {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 1rem;
+    color: #52525b;
+    font-size: 0.75rem;
+}
+
+.modal-divider::before,
+.modal-divider::after {
+    content: "";
+    flex: 1;
+    height: 1px;
+    background: #3f3f46;
+}
+
+.modal-socials {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 0.65rem;
+}
+
+.social-btn {
+    display: block;
+    width: 88px;
+    height: auto;
+    padding: 0;
+    background: none;
+    border-radius: 0;
+    text-decoration: none;
+    transition: transform 0.2s ease, opacity 0.2s ease;
+    line-height: 0;
+}
+
+.social-btn img {
+    width: 100%;
+    height: auto;
+    display: block;
+    pointer-events: none;
+}
+
+.social-btn:hover {
+    transform: translateY(-2px);
+    opacity: 0.9;
+}
+
+/* ====================== ПОДСКАЗКА ЗАКАЗА ====================== */
+.modal-card-hint {
+    max-width: 320px;
+    text-align: center;
+    padding: 1.75rem 1.5rem 1.5rem;
+}
+
+.hint-text {
+    color: #d4d4d8;
+    font-size: 0.95rem;
+    line-height: 1.5;
+    margin: 0 0 0.75rem;
+}
+
+.hint-text strong {
+    color: #EB7604;
+}
+
+.hint-text-sub {
+    color: #71717a;
+    font-size: 0.85rem;
+    margin-bottom: 1.35rem;
+}
+
+.modal-card-hint .form-submit {
+    margin-top: 0.25rem;
 }

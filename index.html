@@ -4,25 +4,29 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ювелирка • Каталог</title>
-    <link rel="stylesheet" href="styles.css?v=9">
+    <link rel="stylesheet" href="styles.css?v=13">
 </head>
 <body>
     <div class="page">
         <div class="header">
             <div class="header-actions">
-                <button type="button" class="order-btn" id="order-hint-btn">ЗАКАЗАТЬ</button>
+                <button type="button" class="order-btn" id="order-hint-btn">ИНФОРМАЦИЯ</button>
                 <button type="button" onclick="clearAllFilters()" class="clear-btn">ОЧИСТИТЬ ВСЕ</button>
             </div>
             <div id="selected-tags" class="selected-tags"></div>
             <div id="available-tags" class="available-tags"></div>
         </div>
         <div id="grid" class="grid"></div>
+        <p class="site-disclaimer">
+            Каталог носит ознакомительный характер. Если какая-то модель нарушает ваши авторские права —
+            <a id="disclaimer-vk" href="https://vk.com/your_page" target="_blank" rel="noopener">напишите нам во VK</a>.
+        </p>
     </div>
 
     <div id="order-modal" class="modal-overlay">
         <div class="modal-card">
             <button type="button" class="modal-close" id="modal-close-btn">&times;</button>
-            <div class="modal-title">ЗАКАЗАТЬ</div>
+            <div class="modal-title">ИНФОРМАЦИЯ</div>
 
             <div class="modal-article-block">
                 <span class="modal-label">Артикул</span>
@@ -30,43 +34,9 @@
                 <span class="modal-hint">уже скопирован в буфер</span>
             </div>
 
-            <div id="ring-size-block" class="ring-size-block" style="display:none">
-                <div class="ring-size-label">Хочу размер кольца</div>
-                <div class="ring-size-options" id="ring-size-options">
-                    <button type="button" class="size-btn" data-size="16">16</button>
-                    <button type="button" class="size-btn" data-size="17">17</button>
-                    <button type="button" class="size-btn" data-size="18">18</button>
-                    <button type="button" class="size-btn" data-size="19">19</button>
-                    <button type="button" class="size-btn" data-size="20">20</button>
-                </div>
-            </div>
-
-            <!-- Форма заказа → Formspree -->
-            <form id="order-form" class="order-form">
-                <input type="hidden" name="article" id="form-article" value="">
-                <input type="hidden" name="size" id="form-size" value="">
-
-                <label class="form-field">
-                    <span>Имя</span>
-                    <input type="text" name="name" placeholder="Как к вам обращаться" required autocomplete="name">
-                </label>
-
-                <label class="form-field">
-                    <span>Telegram или телефон</span>
-                    <input type="text" name="contact" placeholder="@username или +7..." required autocomplete="tel">
-                </label>
-
-                <label class="form-field">
-                    <span>Комментарий</span>
-                    <textarea name="message" rows="2" placeholder="Пожелания к заказу (необязательно)"></textarea>
-                </label>
-
-                <button type="submit" class="form-submit" id="form-submit-btn">Отправить заявку</button>
-                <p class="form-status" id="form-status" hidden></p>
-            </form>
-
-            <div class="modal-divider"><span>или напишите сами</span></div>
-
+            <p class="modal-text">
+                Для дополнительной информации напишите нам в удобную соцсеть и вставьте артикул в сообщение.
+            </p>
             <div class="modal-socials">
                 <a id="link-vk" href="#" target="_blank" rel="noopener" class="social-btn" title="VK">
                     <img src="img/vk.svg" alt="VK">
@@ -74,29 +44,28 @@
                 <a id="link-tg" href="#" target="_blank" rel="noopener" class="social-btn" title="Telegram">
                     <img src="img/tg.svg" alt="Telegram">
                 </a>
-                <a id="link-ig" href="#" target="_blank" rel="noopener" class="social-btn" title="Instagram">
-                    <img src="img/ins.svg" alt="Instagram">
-                </a>
             </div>
         </div>
     </div>
 
 
-    <!-- Подсказка: как заказать -->
+    <!-- Подсказка -->
     <div id="hint-modal" class="modal-overlay">
         <div class="modal-card modal-card-hint">
             <button type="button" class="modal-close" id="hint-close-btn">&times;</button>
-            <div class="modal-title">КАК ЗАКАЗАТЬ</div>
+            <div class="modal-title">ИНФОРМАЦИЯ</div>
             <p class="hint-text">
-                Нажмите <strong>дважды</strong> на любую карточку изделия — откроется окно заказа.
+                Нажмите <strong>дважды</strong> на любую карточку изделия — откроется окно с артикулом и ссылками. На
+                <strong>телефоне</strong>: быстро нажмите на карточку два раза.
             </p>
             <p class="hint-text hint-text-sub">
-                На телефоне: быстро нажмите на карточку два раза.
+                Каталог ознакомительный. Если нарушили ваше авторское право,
+                <a id="hint-vk" href="https://vk.com/your_page" target="_blank" rel="noopener">напишите нам!</a>
             </p>
             <button type="button" class="form-submit" id="hint-ok-btn">Понятно</button>
         </div>
     </div>
 
-    <script src="script.js?v=9"></script>
+    <script src="script.js?v=13"></script>
 </body>
 </html>

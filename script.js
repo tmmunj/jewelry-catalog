@@ -3,43 +3,46 @@
 // Добавляй новые карточки в нужный массив
 // ================================================
 
+// Имена файлов: r1.png — основное фото, r1s.png — hover
 // r — кольца (rings)
 let r = [
-    { article: "r-001", tags: ["ring"], image: "img_kart/r/r-001.png" },
-    { article: "r-002", tags: ["ring"], image: "img_kart/r/r-002.png" },
-    { article: "r-003", tags: ["ring"], image: "img_kart/r/r-003.png" },
-    { article: "r-004", tags: ["ring"], image: "img_kart/r/r-004.png" },
-    { article: "r-005", tags: ["ring"], image: "img_kart/r/r-005.png" },
-    { article: "r-006", tags: ["ring", "brand"], image: "img_kart/r/r-006.png" },
-    { article: "r-007", tags: ["ring"], image: "img_kart/r/r-007.png" },
-    { article: "r-008", tags: ["ring"], image: "img_kart/r/r-008.png" },
+    { article: "r-001", tags: ["ring"], image: "img_kart/r/r1.png" },
+    { article: "r-002", tags: ["ring"], image: "img_kart/r/r2.png" },
+    { article: "r-003", tags: ["ring"], image: "img_kart/r/r3.png" },
+    { article: "r-004", tags: ["ring"], image: "img_kart/r/r4.png" },
+    { article: "r-005", tags: ["ring"], image: "img_kart/r/r5.png" },
+    { article: "r-006", tags: ["ring", "brand"], image: "img_kart/r/r6.png" },
+    { article: "r-007", tags: ["ring"], image: "img_kart/r/r7.png" },
+    { article: "r-008", tags: ["ring"], image: "img_kart/r/r8.png" },
 ];
 
 // e — серьги (earrings)
 let e = [
-    { article: "e-001", tags: ["earrings"], image: "img_kart/e/e-001.png" },
-    { article: "e-002", tags: ["earrings"], image: "img_kart/e/e-002.png" },
-    { article: "e-003", tags: ["earrings", "brand"], image: "img_kart/e/e-003.png" },
-    { article: "e-004", tags: ["earrings", "brand"], image: "img_kart/e/e-004.png" },
-    { article: "e-005", tags: ["earrings", "brand"], image: "img_kart/e/e-005.png" },
-    { article: "e-006", tags: ["earrings", "brand"], image: "img_kart/e/e-006.png" },
+    { article: "e-001", tags: ["earrings"], image: "img_kart/e/e1.png" },
+    { article: "e-002", tags: ["earrings"], image: "img_kart/e/e2.png" },
+    { article: "e-003", tags: ["earrings", "brand"], image: "img_kart/e/e3.png" },
+    { article: "e-004", tags: ["earrings", "brand"], image: "img_kart/e/e4.png" },
+    { article: "e-005", tags: ["earrings", "brand"], image: "img_kart/e/e5.png" },
+    { article: "e-006", tags: ["earrings", "brand"], image: "img_kart/e/e6.png" },
 ];
 
 // p — подвески (pendants)
 let p = [
-    { article: "P-001", tags: ["pendants"], image: "img_kart/p/P-001.png" },
-    { article: "p-002", tags: ["pendants"], image: "img_kart/p/p-002.png" },
+    { article: "P-001", tags: ["pendants"], image: "img_kart/p/p1.png" },
+    { article: "p-002", tags: ["pendants"], image: "img_kart/p/p2.png" },
 ];
 
 // b — браслеты (bracelets)
 let b = [
-    // { article: "b-001", tags: ["bracelets"], image: "img_kart/b/b-001.png" },
+    { article: "b-001", tags: ["bracelets"], image: "img_kart/b/b1.png" },
+    { article: "b-002", tags: ["bracelets"], image: "img_kart/b/b2.png" },
+    { article: "b-003", tags: ["bracelets"], image: "img_kart/b/b3.png" },
 ];
 
 // c — цепочки (chains)
 let c = [
-    { article: "c-001", tags: ["chains"], image: "img_kart/c/c-001.png" },
-    { article: "c-002", tags: ["chains"], image: "img_kart/c/c-002.png" },
+    { article: "c-001", tags: ["chains"], image: "img_kart/c/c1.png" },
+    { article: "c-002", tags: ["chains"], image: "img_kart/c/c2.png" },
 ];
 
 
@@ -53,28 +56,11 @@ let activeFilters = new Set();
 
 const SOCIAL = {
     telegram: "tmmunjewelry",
-    vk: "https://vk.com/your_page",
-    instagram: "your_instagram"
+    vk: "https://vk.com/your_page"
 };
-
-// Formspree: замените на свой ID с https://formspree.io
-// Пример: если endpoint https://formspree.io/f/xyzabcde → укажите "xyzabcde"
-const FORMSPREE_ID = "xjybzwap";
 
 // текущий выбор в модалке
 let currentArticle = "";
-let currentIsRing = false;
-let selectedRingSize = null;
-
-function isRingItem(tags, article) {
-    if (tags && tags.some(function (t) {
-        var x = (t || "").toLowerCase();
-        return x === "ring" || x === "rings";
-    })) return true;
-    // запасной вариант: артикул начинается с r (r-001, R-001, r001…)
-    var a = (article || "").toLowerCase().replace(/^\s+/, "");
-    return a.charAt(0) === "r";
-}
 
 function renderAvailableTags() {
     const container = document.getElementById("available-tags");
@@ -110,7 +96,7 @@ function filterItems() {
     }
 
     filtered.forEach(item => {
-        const hoverSrc = item.image.replace(".png", "swap.png");
+        const hoverSrc = item.image.replace(".png", "s.png");
         const tagsAttr = item.tags.join(",");
         let tagsHtml = item.tags.map(tag =>
             '<span class="tag" data-tag="' + tag + '">' + tag + '</span>'
@@ -171,23 +157,14 @@ function onCardSelect(card) {
     setTimeout(function () { actionLocked = false; }, 600);
 
     var article = card.getAttribute("data-article") || "";
-    var tags = (card.getAttribute("data-tags") || "").split(",").filter(Boolean);
-    var ring = isRingItem(tags, article);
-
     currentArticle = article;
-    currentIsRing = ring;
-    selectedRingSize = null;
 
     copyOrderText();
-    openOrderModal(article, ring);
+    openOrderModal(article);
 }
 
 function buildOrderMessage() {
-    var text = "Здравствуйте! Хочу заказать артикул " + (currentArticle || "");
-    if (currentIsRing && selectedRingSize) {
-        text += ", размер " + selectedRingSize;
-    }
-    return text;
+    return "Здравствуйте! Интересует артикул " + (currentArticle || "");
 }
 
 function copyOrderText() {
@@ -218,52 +195,15 @@ function updateSocialLinks() {
     var msg = encodeURIComponent(buildOrderMessage());
     var linkTg = document.getElementById("link-tg");
     var linkVk = document.getElementById("link-vk");
-    var linkIg = document.getElementById("link-ig");
     if (linkTg) linkTg.href = "https://t.me/" + SOCIAL.telegram + "?text=" + msg;
     if (linkVk) linkVk.href = SOCIAL.vk;
-    if (linkIg) linkIg.href = "https://instagram.com/" + SOCIAL.instagram;
 }
 
-function openOrderModal(article, isRing) {
+function openOrderModal(article) {
     var modal = document.getElementById("order-modal");
     if (!modal) return;
 
     document.getElementById("modal-article").textContent = article || "—";
-
-    var formArticle = document.getElementById("form-article");
-    var formSize = document.getElementById("form-size");
-    if (formArticle) formArticle.value = article || "";
-    if (formSize) formSize.value = "";
-
-    var form = document.getElementById("order-form");
-    if (form) form.reset();
-    if (formArticle) formArticle.value = article || "";
-
-    var status = document.getElementById("form-status");
-    if (status) {
-        status.hidden = true;
-        status.textContent = "";
-        status.className = "form-status";
-    }
-    var submitBtn = document.getElementById("form-submit-btn");
-    if (submitBtn) {
-        submitBtn.disabled = false;
-        submitBtn.textContent = "Отправить заявку";
-    }
-
-    var sizeBlock = document.getElementById("ring-size-block");
-    if (sizeBlock) {
-        if (isRing) {
-            sizeBlock.hidden = false;
-            sizeBlock.style.display = "block";
-            sizeBlock.querySelectorAll(".size-btn").forEach(function (btn) {
-                btn.classList.remove("active");
-            });
-        } else {
-            sizeBlock.hidden = true;
-            sizeBlock.style.display = "none";
-        }
-    }
 
     updateSocialLinks();
     modal.classList.add("open");
@@ -275,28 +215,6 @@ function closeOrderModal() {
     if (!modal) return;
     modal.classList.remove("open");
     document.body.style.overflow = "";
-}
-
-function setupRingSizeButtons() {
-    var options = document.getElementById("ring-size-options");
-    if (!options) return;
-
-    options.addEventListener("click", function (e) {
-        var btn = e.target.closest(".size-btn");
-        if (!btn) return;
-
-        options.querySelectorAll(".size-btn").forEach(function (b) {
-            b.classList.remove("active");
-        });
-        btn.classList.add("active");
-        selectedRingSize = btn.getAttribute("data-size");
-
-        var formSize = document.getElementById("form-size");
-        if (formSize) formSize.value = selectedRingSize || "";
-
-        copyOrderText();
-        updateSocialLinks();
-    });
 }
 
 function toggleFilter(tag) {
@@ -326,74 +244,6 @@ function updateUI() {
     filterItems();
 }
 
-function setupOrderForm() {
-    var form = document.getElementById("order-form");
-    if (!form) return;
-
-    form.addEventListener("submit", function (e) {
-        e.preventDefault();
-
-        if (!FORMSPREE_ID || FORMSPREE_ID === "YOUR_FORMSPREE_ID") {
-            alert("Сначала укажите FORMSPREE_ID в script.js\nИнструкция: formspree.io → New Form → скопируйте ID");
-            return;
-        }
-
-        var submitBtn = document.getElementById("form-submit-btn");
-        var status = document.getElementById("form-status");
-
-        // актуальные артикул и размер
-        var formArticle = document.getElementById("form-article");
-        var formSize = document.getElementById("form-size");
-        if (formArticle) formArticle.value = currentArticle || "";
-        if (formSize) formSize.value = selectedRingSize || "";
-
-        if (currentIsRing && !selectedRingSize) {
-            if (status) {
-                status.hidden = false;
-                status.className = "form-status error";
-                status.textContent = "Выберите размер кольца";
-            }
-            return;
-        }
-
-        submitBtn.disabled = true;
-        submitBtn.textContent = "Отправка...";
-        if (status) {
-            status.hidden = true;
-            status.textContent = "";
-        }
-
-        var data = new FormData(form);
-
-        fetch("https://formspree.io/f/" + FORMSPREE_ID, {
-            method: "POST",
-            body: data,
-            headers: { "Accept": "application/json" }
-        })
-            .then(function (res) {
-                if (!res.ok) throw new Error("fail");
-                submitBtn.textContent = "Отправлено";
-                if (status) {
-                    status.hidden = false;
-                    status.className = "form-status ok";
-                    status.textContent = "Заявка отправлена! Мы свяжемся с вами.";
-                }
-                setTimeout(function () {
-                    closeOrderModal();
-                }, 1800);
-            })
-            .catch(function () {
-                submitBtn.disabled = false;
-                submitBtn.textContent = "Отправить заявку";
-                if (status) {
-                    status.hidden = false;
-                    status.className = "form-status error";
-                    status.textContent = "Не удалось отправить. Напишите в соцсети ниже.";
-                }
-            });
-    });
-}
-
 function openHintModal() {
     var modal = document.getElementById("hint-modal");
     if (!modal) return;
@@ -412,8 +262,11 @@ window.onload = function () {
     renderAvailableTags();
     renderSelectedTags();
     filterItems();
-    setupRingSizeButtons();
-    setupOrderForm();
+
+    var discVk = document.getElementById("disclaimer-vk");
+    var hintVk = document.getElementById("hint-vk");
+    if (discVk) discVk.href = SOCIAL.vk;
+    if (hintVk) hintVk.href = SOCIAL.vk;
 
     var modal = document.getElementById("order-modal");
     var closeBtn = document.getElementById("modal-close-btn");
